@@ -1,3 +1,4 @@
+import Button from "../components/Button";
 import Layout from "../components/Layout";
 import Table from "../components/Table";
 import Client from "../core/Client";
@@ -11,6 +12,14 @@ export default function Home() {
     new Client('Pedro', 54, '4'),
   ]
 
+  function selectClient(client: Client){
+    console.log(client.name)
+  }
+
+  function deleteClient(client: Client) {
+    console.log(client.name)
+  }
+
   return (
     <div className={`
     flex justify-center items-center h-screen
@@ -18,7 +27,15 @@ export default function Home() {
     text-white
     `}>
     <Layout title="Cadastro simple" >
-      <Table clients={clients}></Table>
+      <div className="flex justify-end">
+        <Button className="mb-4">
+          Novo Cliente
+        </Button>
+      </div>      
+      <Table clients={clients} 
+        selectClient={selectClient}
+        deleteClient={deleteClient}>
+      </Table>
     </Layout>   
     </div>
   )
